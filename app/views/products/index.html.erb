@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Products</h1>
+<div class="page-header">
+  <h1>Listing Products</h1>
+</div>
 
 <table class="table table-striped">
   <% @products.each do |product| %>
@@ -15,14 +17,22 @@
         </dl>
       </td>
       <td class="list_actions">
-        <%= link_to 'Show', product %><br>
-        <%= link_to 'Edit', edit_product_path(product) %><br>
-        <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <div class="btn-group" role="group" aria-label="...">
+          <%= link_to product, class: 'btn btn-default', title: 'View', 'data-toggle' => 'tooltip', 'data-placement' => 'top' do %>
+            <%= fa_icon 'eye' %>
+          <% end %>
+          <%= link_to edit_product_path(product), class: 'btn btn-default',
+              title: 'Edit', 'data-toggle' => 'tooltip', 'data-placement' => 'top' do %>
+            <%= fa_icon 'pencil-square-o' %>
+          <% end %>
+          <%= link_to product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default',
+              title: 'Delete', 'data-toggle' => 'tooltip', 'data-placement' => 'top' do %>
+            <%= fa_icon 'trash-o' %>
+          <% end %>
+      </div>
       </td>
     </tr>
   <% end %>
 </table>
 
-<br>
-
-<%= link_to 'New Product', new_product_path %>
+<%= link_to 'New Product', new_product_path, class: 'btn btn-success pull-right' %>

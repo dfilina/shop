@@ -4,3 +4,9 @@
 body {
   padding-top: 50px;
 }
+
+p, div.price-line {
+  form, div {
+    display: inline;
+  }
+}

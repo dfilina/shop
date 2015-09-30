@@ -30,16 +30,24 @@
   </nav>
 
   <div class="container">
-    <!-- Alerts & Messages -->
-    <% if flash[:notice] %>
-      <div class="alert alert-success"><%= flash[:notice] %></div>
-    <% end %>
+    <div class="row">
+      <!-- Alerts & Messages -->
+      <% if flash[:notice] %>
+        <div class="alert alert-success"><%= flash[:notice] %></div>
+      <% end %>
 
-    <% if flash[:alert] %>
-      <div class="alert alert-danger"><%= flash[:alert] %></div>
-    <% end %>
-
-    <%= yield %>
+      <% if flash[:alert] %>
+        <div class="alert alert-danger"><%= flash[:alert] %></div>
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <%= yield %>
+      </div>
+      <div class="col-md-4" id="cart">
+        <%= render @cart %>
+      </div>
+    </div>
   </div>
 </body>
 </html>

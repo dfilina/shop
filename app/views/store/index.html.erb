@@ -6,15 +6,15 @@
   <% @products.each do |product| %>
     <% cache ['entry', product] do %>
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-4">
           <%= image_tag(product.image_url) %>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-8">
           <h3><%= product.title %></h3>
           <%= sanitize(product.description) %>
           <div class="price-line">
             <span class="price"><%= number_to_currency(product.price) %></span>
-            <%= button_to 'Add to Cart', line_items_path(product_id: product, clas: 'btn btn-default') %>
+            <%= button_to 'Add to Cart', line_items_path(product_id: product), remote: true, class: 'btn btn-primary' %>
           </div>
         </div>
       </div>

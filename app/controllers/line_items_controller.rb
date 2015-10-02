@@ -35,7 +35,7 @@ class LineItemsController < ApplicationController
           # flash[:notice] = 'Line item was successfully created.'
           redirect_to store_url
         }
-        format.js
+        format.js { @current_item = @line_item }
         format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new }
@@ -67,13 +67,10 @@ class LineItemsController < ApplicationController
     @line_item.destroy
     respond_to do |format|
       format.html {
-        if LineItem.find_by_cart_id(@line_item.cart_id).nil?
-          flash[:notice] = 'Your cart is currently empty.'
-          redirect_to store_url
-        else
-          flash[:notice] = 'Item Removed'
-          redirect_to @line_item.cart
-        end
+        #if LineItem.find_by_cart_id(@line_item.cart_id).nil?
+        #  flash[:notice] = 'Your cart is currently empty.'
+        #end
+        redirect_to store_url
       }
       format.json { head :no_content }
     end

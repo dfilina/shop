@@ -1,6 +1,6 @@
 class LineItemsController < ApplicationController
   include CurrentCart
-  before_action :set_cart, only: [:create]
+  before_action :set_cart, only: [:create, :increment, :decrement]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
   # GET /line_items
@@ -74,6 +74,40 @@ class LineItemsController < ApplicationController
       }
       format.json { head :no_content }
     end
+  end
+
+  def increment
+    @line_item = current_cart.increment_line_item_quantity(params[:id])
+
+    respond_to do |format|
+      if @line_item.save
+        format.html { redirect_to store_url }
+        format.js { @current_item = @line_item }
+        format.json { head :ok }
+      else
+        format.html { render :edit }
+        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def decrement
+    @line_item = current_cart.decrement_line_item_quantity(params[:id])
+
+    respond_to do |format|
+      if @line_item.save
+        format.html { redirect_to store_url }
+        format.js { @current_item = @line_item }
+        format.json { head :ok }
+      else
+        format.html { render :edit }
+        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def current_cart
+    @current_cart ||= Cart.find(session[:cart_id])
   end
 
   private

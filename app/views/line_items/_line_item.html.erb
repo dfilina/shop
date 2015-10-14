@@ -6,14 +6,14 @@
     <td>
       <div class="input-group">
         <span class="input-group-btn">
-          <%= link_to decrement_line_item_path(line_item), method: :put, remote: true, class: 'btn btn-default btn-number' do %>
-            <%= fa_icon 'minus' %>
+          <%= link_to decrement_line_item_url(line_item), method: :put, remote: true, class: 'btn btn-default btn-number' do %>
+            <i class="glyphicon glyphicon-minus"></i>
           <% end %>
         </span>
         <input type="text" name="quant[1]" class="form-control form-number" value="<%= line_item.quantity %>" min="1">
         <span class="input-group-btn">
-          <%= link_to increment_line_item_path(line_item), method: :put, remote: true, class: 'btn btn-default btn-number' do %>
-            <%= fa_icon 'plus' %>
+          <%= link_to increment_line_item_url(line_item), method: :put, remote: true, class: 'btn btn-default btn-number' do %>
+            <i class="glyphicon glyphicon-plus"></i>
           <% end %>
         </span>
       </div>
@@ -23,7 +23,7 @@
     <td>
       <%= link_to line_item, method: :delete, class: 'btn btn-danger',
           title: 'Remove', 'data-toggle' => 'tooltip', 'data-placement' => 'top' do %>
-        <%= fa_icon 'trash-o' %>
+        <i class="glyphicon glyphicon-trash"></i>
       <% end %>
     </td>
   </tr>

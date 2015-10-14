@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include FontAwesome::Rails::IconHelper
   def hidden_div_if(condition, attributes = {}, &block)
     if condition
       attributes["style"] = "display: none"

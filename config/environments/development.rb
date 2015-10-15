@@ -2,7 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    adress: "smtp.gmail.com",
+    address: "smtp.gmail.com",
     port: 587,
     authentication: "plain",
     user_name: ENV["EMAIL"],
@@ -48,4 +48,4 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 end
 
-Rails.application.routes.default_url_options[:host] = '???'
+Rails.application.routes.default_url_options[:host] = 'localhost:3000'

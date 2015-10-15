@@ -5,8 +5,8 @@ Rails.application.configure do
     adress: "smtp.gmail.com",
     port: 587,
     authentication: "plain",
-    user_name: ENV["EMAIL"],
-    password: ENV["PASSWORD"],
+    user_name: 'dmitry.filina@gmail.com',
+    password: ENV['SMTP_PASSWORD'],
     enable_starttls_auto: true
   }
   # Code is not reloaded between requests.
